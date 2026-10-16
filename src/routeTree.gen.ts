@@ -17,6 +17,8 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ConsoleAdminIndexRouteImport } from './routes/_console.admin.index'
+import { Route as ConsoleIncidentsIndexRouteImport } from './routes/_console.incidents.index'
+import { Route as ConsoleIncidentsIdRouteImport } from './routes/_console.incidents.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -57,6 +59,16 @@ const ConsoleAdminIndexRoute = ConsoleAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => ConsoleRoute,
 } as any)
+const ConsoleIncidentsIndexRoute = ConsoleIncidentsIndexRouteImport.update({
+  id: '/incidents/',
+  path: '/incidents/',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleIncidentsIdRoute = ConsoleIncidentsIdRouteImport.update({
+  id: '/incidents/$id',
+  path: '/incidents/$id',
+  getParentRoute: () => ConsoleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,7 +77,9 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin/': typeof ConsoleAdminIndexRoute
+  '/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -74,7 +88,9 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin': typeof ConsoleAdminIndexRoute
+  '/incidents': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,7 +101,9 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_console/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/_console/admin/': typeof ConsoleAdminIndexRoute
+  '/_console/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -96,7 +114,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/incidents/$id'
     | '/admin/'
+    | '/incidents/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -105,7 +125,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/incidents/$id'
     | '/admin'
+    | '/incidents'
   id:
     | '__root__'
     | '/'
@@ -115,7 +137,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/_console/incidents/$id'
     | '/_console/admin/'
+    | '/_console/incidents/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -186,15 +210,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsoleAdminIndexRouteImport
       parentRoute: typeof ConsoleRoute
     }
+    '/_console/incidents/': {
+      id: '/_console/incidents/'
+      path: '/incidents'
+      fullPath: '/incidents/'
+      preLoaderRoute: typeof ConsoleIncidentsIndexRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/incidents/$id': {
+      id: '/_console/incidents/$id'
+      path: '/incidents/$id'
+      fullPath: '/incidents/$id'
+      preLoaderRoute: typeof ConsoleIncidentsIdRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
   }
 }
 
 interface ConsoleRouteChildren {
+  ConsoleIncidentsIdRoute: typeof ConsoleIncidentsIdRoute
   ConsoleAdminIndexRoute: typeof ConsoleAdminIndexRoute
+  ConsoleIncidentsIndexRoute: typeof ConsoleIncidentsIndexRoute
 }
 
 const ConsoleRouteChildren: ConsoleRouteChildren = {
+  ConsoleIncidentsIdRoute: ConsoleIncidentsIdRoute,
   ConsoleAdminIndexRoute: ConsoleAdminIndexRoute,
+  ConsoleIncidentsIndexRoute: ConsoleIncidentsIndexRoute,
 }
 
 const ConsoleRouteWithChildren =
