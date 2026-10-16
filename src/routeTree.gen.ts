@@ -16,7 +16,20 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ConsoleAnalyticsRouteImport } from './routes/_console.analytics'
+import { Route as ConsoleDepartmentsRouteImport } from './routes/_console.departments'
+import { Route as ConsoleFieldRouteImport } from './routes/_console.field'
+import { Route as ConsoleMapRouteImport } from './routes/_console.map'
+import { Route as ConsoleNotificationsRouteImport } from './routes/_console.notifications'
+import { Route as ConsoleOfficerRouteImport } from './routes/_console.officer'
+import { Route as ConsoleSettingsRouteImport } from './routes/_console.settings'
+import { Route as ConsoleWorkforceRouteImport } from './routes/_console.workforce'
 import { Route as ConsoleAdminIndexRouteImport } from './routes/_console.admin.index'
+import { Route as ConsoleAdminAiIntelligenceRouteImport } from './routes/_console.admin.ai-intelligence'
+import { Route as ConsoleAdminAuditLogsRouteImport } from './routes/_console.admin.audit-logs'
+import { Route as ConsoleAdminSlaRouteImport } from './routes/_console.admin.sla'
+import { Route as ConsoleCitizenIndexRouteImport } from './routes/_console.citizen.index'
+import { Route as ConsoleCitizenReportRouteImport } from './routes/_console.citizen.report'
 import { Route as ConsoleIncidentsIndexRouteImport } from './routes/_console.incidents.index'
 import { Route as ConsoleIncidentsIdRouteImport } from './routes/_console.incidents.$id'
 
@@ -54,9 +67,75 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsoleAnalyticsRoute = ConsoleAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleDepartmentsRoute = ConsoleDepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleFieldRoute = ConsoleFieldRouteImport.update({
+  id: '/field',
+  path: '/field',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleMapRoute = ConsoleMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleNotificationsRoute = ConsoleNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleOfficerRoute = ConsoleOfficerRouteImport.update({
+  id: '/officer',
+  path: '/officer',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleSettingsRoute = ConsoleSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleWorkforceRoute = ConsoleWorkforceRouteImport.update({
+  id: '/workforce',
+  path: '/workforce',
+  getParentRoute: () => ConsoleRoute,
+} as any)
 const ConsoleAdminIndexRoute = ConsoleAdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleAdminAiIntelligenceRoute =
+  ConsoleAdminAiIntelligenceRouteImport.update({
+    id: '/admin/ai-intelligence',
+    path: '/admin/ai-intelligence',
+    getParentRoute: () => ConsoleRoute,
+  } as any)
+const ConsoleAdminAuditLogsRoute = ConsoleAdminAuditLogsRouteImport.update({
+  id: '/admin/audit-logs',
+  path: '/admin/audit-logs',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleAdminSlaRoute = ConsoleAdminSlaRouteImport.update({
+  id: '/admin/sla',
+  path: '/admin/sla',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleCitizenIndexRoute = ConsoleCitizenIndexRouteImport.update({
+  id: '/citizen/',
+  path: '/citizen/',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleCitizenReportRoute = ConsoleCitizenReportRouteImport.update({
+  id: '/citizen/report',
+  path: '/citizen/report',
   getParentRoute: () => ConsoleRoute,
 } as any)
 const ConsoleIncidentsIndexRoute = ConsoleIncidentsIndexRouteImport.update({
@@ -77,8 +156,21 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/analytics': typeof ConsoleAnalyticsRoute
+  '/departments': typeof ConsoleDepartmentsRoute
+  '/field': typeof ConsoleFieldRoute
+  '/map': typeof ConsoleMapRoute
+  '/notifications': typeof ConsoleNotificationsRoute
+  '/officer': typeof ConsoleOfficerRoute
+  '/settings': typeof ConsoleSettingsRoute
+  '/workforce': typeof ConsoleWorkforceRoute
+  '/admin/ai-intelligence': typeof ConsoleAdminAiIntelligenceRoute
+  '/admin/audit-logs': typeof ConsoleAdminAuditLogsRoute
+  '/admin/sla': typeof ConsoleAdminSlaRoute
+  '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin/': typeof ConsoleAdminIndexRoute
+  '/citizen/': typeof ConsoleCitizenIndexRoute
   '/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -88,8 +180,21 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/analytics': typeof ConsoleAnalyticsRoute
+  '/departments': typeof ConsoleDepartmentsRoute
+  '/field': typeof ConsoleFieldRoute
+  '/map': typeof ConsoleMapRoute
+  '/notifications': typeof ConsoleNotificationsRoute
+  '/officer': typeof ConsoleOfficerRoute
+  '/settings': typeof ConsoleSettingsRoute
+  '/workforce': typeof ConsoleWorkforceRoute
+  '/admin/ai-intelligence': typeof ConsoleAdminAiIntelligenceRoute
+  '/admin/audit-logs': typeof ConsoleAdminAuditLogsRoute
+  '/admin/sla': typeof ConsoleAdminSlaRoute
+  '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin': typeof ConsoleAdminIndexRoute
+  '/citizen': typeof ConsoleCitizenIndexRoute
   '/incidents': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesById {
@@ -101,8 +206,21 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_console/analytics': typeof ConsoleAnalyticsRoute
+  '/_console/departments': typeof ConsoleDepartmentsRoute
+  '/_console/field': typeof ConsoleFieldRoute
+  '/_console/map': typeof ConsoleMapRoute
+  '/_console/notifications': typeof ConsoleNotificationsRoute
+  '/_console/officer': typeof ConsoleOfficerRoute
+  '/_console/settings': typeof ConsoleSettingsRoute
+  '/_console/workforce': typeof ConsoleWorkforceRoute
+  '/_console/admin/ai-intelligence': typeof ConsoleAdminAiIntelligenceRoute
+  '/_console/admin/audit-logs': typeof ConsoleAdminAuditLogsRoute
+  '/_console/admin/sla': typeof ConsoleAdminSlaRoute
+  '/_console/citizen/report': typeof ConsoleCitizenReportRoute
   '/_console/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/_console/admin/': typeof ConsoleAdminIndexRoute
+  '/_console/citizen/': typeof ConsoleCitizenIndexRoute
   '/_console/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRouteTypes {
@@ -114,8 +232,21 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/analytics'
+    | '/departments'
+    | '/field'
+    | '/map'
+    | '/notifications'
+    | '/officer'
+    | '/settings'
+    | '/workforce'
+    | '/admin/ai-intelligence'
+    | '/admin/audit-logs'
+    | '/admin/sla'
+    | '/citizen/report'
     | '/incidents/$id'
     | '/admin/'
+    | '/citizen/'
     | '/incidents/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -125,8 +256,21 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/analytics'
+    | '/departments'
+    | '/field'
+    | '/map'
+    | '/notifications'
+    | '/officer'
+    | '/settings'
+    | '/workforce'
+    | '/admin/ai-intelligence'
+    | '/admin/audit-logs'
+    | '/admin/sla'
+    | '/citizen/report'
     | '/incidents/$id'
     | '/admin'
+    | '/citizen'
     | '/incidents'
   id:
     | '__root__'
@@ -137,8 +281,21 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/_console/analytics'
+    | '/_console/departments'
+    | '/_console/field'
+    | '/_console/map'
+    | '/_console/notifications'
+    | '/_console/officer'
+    | '/_console/settings'
+    | '/_console/workforce'
+    | '/_console/admin/ai-intelligence'
+    | '/_console/admin/audit-logs'
+    | '/_console/admin/sla'
+    | '/_console/citizen/report'
     | '/_console/incidents/$id'
     | '/_console/admin/'
+    | '/_console/citizen/'
     | '/_console/incidents/'
   fileRoutesById: FileRoutesById
 }
@@ -203,11 +360,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_console/analytics': {
+      id: '/_console/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof ConsoleAnalyticsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/departments': {
+      id: '/_console/departments'
+      path: '/departments'
+      fullPath: '/departments'
+      preLoaderRoute: typeof ConsoleDepartmentsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/field': {
+      id: '/_console/field'
+      path: '/field'
+      fullPath: '/field'
+      preLoaderRoute: typeof ConsoleFieldRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/map': {
+      id: '/_console/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof ConsoleMapRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/notifications': {
+      id: '/_console/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof ConsoleNotificationsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/officer': {
+      id: '/_console/officer'
+      path: '/officer'
+      fullPath: '/officer'
+      preLoaderRoute: typeof ConsoleOfficerRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/settings': {
+      id: '/_console/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof ConsoleSettingsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/workforce': {
+      id: '/_console/workforce'
+      path: '/workforce'
+      fullPath: '/workforce'
+      preLoaderRoute: typeof ConsoleWorkforceRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
     '/_console/admin/': {
       id: '/_console/admin/'
       path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof ConsoleAdminIndexRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/admin/ai-intelligence': {
+      id: '/_console/admin/ai-intelligence'
+      path: '/admin/ai-intelligence'
+      fullPath: '/admin/ai-intelligence'
+      preLoaderRoute: typeof ConsoleAdminAiIntelligenceRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/admin/audit-logs': {
+      id: '/_console/admin/audit-logs'
+      path: '/admin/audit-logs'
+      fullPath: '/admin/audit-logs'
+      preLoaderRoute: typeof ConsoleAdminAuditLogsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/admin/sla': {
+      id: '/_console/admin/sla'
+      path: '/admin/sla'
+      fullPath: '/admin/sla'
+      preLoaderRoute: typeof ConsoleAdminSlaRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/citizen/': {
+      id: '/_console/citizen/'
+      path: '/citizen'
+      fullPath: '/citizen/'
+      preLoaderRoute: typeof ConsoleCitizenIndexRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/citizen/report': {
+      id: '/_console/citizen/report'
+      path: '/citizen/report'
+      fullPath: '/citizen/report'
+      preLoaderRoute: typeof ConsoleCitizenReportRouteImport
       parentRoute: typeof ConsoleRoute
     }
     '/_console/incidents/': {
@@ -228,14 +476,40 @@ declare module '@tanstack/react-router' {
 }
 
 interface ConsoleRouteChildren {
+  ConsoleAnalyticsRoute: typeof ConsoleAnalyticsRoute
+  ConsoleDepartmentsRoute: typeof ConsoleDepartmentsRoute
+  ConsoleFieldRoute: typeof ConsoleFieldRoute
+  ConsoleMapRoute: typeof ConsoleMapRoute
+  ConsoleNotificationsRoute: typeof ConsoleNotificationsRoute
+  ConsoleOfficerRoute: typeof ConsoleOfficerRoute
+  ConsoleSettingsRoute: typeof ConsoleSettingsRoute
+  ConsoleWorkforceRoute: typeof ConsoleWorkforceRoute
+  ConsoleAdminAiIntelligenceRoute: typeof ConsoleAdminAiIntelligenceRoute
+  ConsoleAdminAuditLogsRoute: typeof ConsoleAdminAuditLogsRoute
+  ConsoleAdminSlaRoute: typeof ConsoleAdminSlaRoute
+  ConsoleCitizenReportRoute: typeof ConsoleCitizenReportRoute
   ConsoleIncidentsIdRoute: typeof ConsoleIncidentsIdRoute
   ConsoleAdminIndexRoute: typeof ConsoleAdminIndexRoute
+  ConsoleCitizenIndexRoute: typeof ConsoleCitizenIndexRoute
   ConsoleIncidentsIndexRoute: typeof ConsoleIncidentsIndexRoute
 }
 
 const ConsoleRouteChildren: ConsoleRouteChildren = {
+  ConsoleAnalyticsRoute: ConsoleAnalyticsRoute,
+  ConsoleDepartmentsRoute: ConsoleDepartmentsRoute,
+  ConsoleFieldRoute: ConsoleFieldRoute,
+  ConsoleMapRoute: ConsoleMapRoute,
+  ConsoleNotificationsRoute: ConsoleNotificationsRoute,
+  ConsoleOfficerRoute: ConsoleOfficerRoute,
+  ConsoleSettingsRoute: ConsoleSettingsRoute,
+  ConsoleWorkforceRoute: ConsoleWorkforceRoute,
+  ConsoleAdminAiIntelligenceRoute: ConsoleAdminAiIntelligenceRoute,
+  ConsoleAdminAuditLogsRoute: ConsoleAdminAuditLogsRoute,
+  ConsoleAdminSlaRoute: ConsoleAdminSlaRoute,
+  ConsoleCitizenReportRoute: ConsoleCitizenReportRoute,
   ConsoleIncidentsIdRoute: ConsoleIncidentsIdRoute,
   ConsoleAdminIndexRoute: ConsoleAdminIndexRoute,
+  ConsoleCitizenIndexRoute: ConsoleCitizenIndexRoute,
   ConsoleIncidentsIndexRoute: ConsoleIncidentsIndexRoute,
 }
 

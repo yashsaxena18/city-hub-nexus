@@ -35,7 +35,7 @@ function Incidents() {
   const { state, me } = useStore();
   const L = useLookups();
   const s = Route.useSearch();
-  const navigate = useNavigate({ from: "/incidents" });
+  const navigate = useNavigate({ from: "/incidents/" });
   const dlg = useIncidentDialogs();
   const set = (patch: Partial<Search>) => navigate({ search: (prev: Search) => ({ ...prev, page: undefined, ...patch }), replace: true });
 

@@ -155,7 +155,6 @@ function CommandCentre() {
           </ul>
         </Panel>
       </div>
-      <div className="mt-4 text-xs text-muted-foreground">Showing overdue flags: <OverdueFlag incident={overdue[0] ?? list[0]} /> indicates SLA deadline passed.</div>
     </div>
   );
 }
