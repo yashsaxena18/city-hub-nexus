@@ -16,7 +16,11 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ConsoleDepartmentsRouteImport } from './routes/_console.departments'
+import { Route as ConsoleFieldRouteImport } from './routes/_console.field'
 import { Route as ConsoleMapRouteImport } from './routes/_console.map'
+import { Route as ConsoleOfficerRouteImport } from './routes/_console.officer'
+import { Route as ConsoleWorkforceRouteImport } from './routes/_console.workforce'
 import { Route as ConsoleAdminIndexRouteImport } from './routes/_console.admin.index'
 import { Route as ConsoleCitizenIndexRouteImport } from './routes/_console.citizen.index'
 import { Route as ConsoleCitizenReportRouteImport } from './routes/_console.citizen.report'
@@ -57,9 +61,29 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsoleDepartmentsRoute = ConsoleDepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleFieldRoute = ConsoleFieldRouteImport.update({
+  id: '/field',
+  path: '/field',
+  getParentRoute: () => ConsoleRoute,
+} as any)
 const ConsoleMapRoute = ConsoleMapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleOfficerRoute = ConsoleOfficerRouteImport.update({
+  id: '/officer',
+  path: '/officer',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleWorkforceRoute = ConsoleWorkforceRouteImport.update({
+  id: '/workforce',
+  path: '/workforce',
   getParentRoute: () => ConsoleRoute,
 } as any)
 const ConsoleAdminIndexRoute = ConsoleAdminIndexRouteImport.update({
@@ -95,7 +119,11 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/departments': typeof ConsoleDepartmentsRoute
+  '/field': typeof ConsoleFieldRoute
   '/map': typeof ConsoleMapRoute
+  '/officer': typeof ConsoleOfficerRoute
+  '/workforce': typeof ConsoleWorkforceRoute
   '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin/': typeof ConsoleAdminIndexRoute
@@ -109,7 +137,11 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/departments': typeof ConsoleDepartmentsRoute
+  '/field': typeof ConsoleFieldRoute
   '/map': typeof ConsoleMapRoute
+  '/officer': typeof ConsoleOfficerRoute
+  '/workforce': typeof ConsoleWorkforceRoute
   '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin': typeof ConsoleAdminIndexRoute
@@ -125,7 +157,11 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_console/departments': typeof ConsoleDepartmentsRoute
+  '/_console/field': typeof ConsoleFieldRoute
   '/_console/map': typeof ConsoleMapRoute
+  '/_console/officer': typeof ConsoleOfficerRoute
+  '/_console/workforce': typeof ConsoleWorkforceRoute
   '/_console/citizen/report': typeof ConsoleCitizenReportRoute
   '/_console/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/_console/admin/': typeof ConsoleAdminIndexRoute
@@ -141,7 +177,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/departments'
+    | '/field'
     | '/map'
+    | '/officer'
+    | '/workforce'
     | '/citizen/report'
     | '/incidents/$id'
     | '/admin/'
@@ -155,7 +195,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/departments'
+    | '/field'
     | '/map'
+    | '/officer'
+    | '/workforce'
     | '/citizen/report'
     | '/incidents/$id'
     | '/admin'
@@ -170,7 +214,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/_console/departments'
+    | '/_console/field'
     | '/_console/map'
+    | '/_console/officer'
+    | '/_console/workforce'
     | '/_console/citizen/report'
     | '/_console/incidents/$id'
     | '/_console/admin/'
@@ -239,11 +287,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_console/departments': {
+      id: '/_console/departments'
+      path: '/departments'
+      fullPath: '/departments'
+      preLoaderRoute: typeof ConsoleDepartmentsRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/field': {
+      id: '/_console/field'
+      path: '/field'
+      fullPath: '/field'
+      preLoaderRoute: typeof ConsoleFieldRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
     '/_console/map': {
       id: '/_console/map'
       path: '/map'
       fullPath: '/map'
       preLoaderRoute: typeof ConsoleMapRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/officer': {
+      id: '/_console/officer'
+      path: '/officer'
+      fullPath: '/officer'
+      preLoaderRoute: typeof ConsoleOfficerRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/workforce': {
+      id: '/_console/workforce'
+      path: '/workforce'
+      fullPath: '/workforce'
+      preLoaderRoute: typeof ConsoleWorkforceRouteImport
       parentRoute: typeof ConsoleRoute
     }
     '/_console/admin/': {
@@ -285,7 +361,11 @@ declare module '@tanstack/react-router' {
 }
 
 interface ConsoleRouteChildren {
+  ConsoleDepartmentsRoute: typeof ConsoleDepartmentsRoute
+  ConsoleFieldRoute: typeof ConsoleFieldRoute
   ConsoleMapRoute: typeof ConsoleMapRoute
+  ConsoleOfficerRoute: typeof ConsoleOfficerRoute
+  ConsoleWorkforceRoute: typeof ConsoleWorkforceRoute
   ConsoleCitizenReportRoute: typeof ConsoleCitizenReportRoute
   ConsoleIncidentsIdRoute: typeof ConsoleIncidentsIdRoute
   ConsoleAdminIndexRoute: typeof ConsoleAdminIndexRoute
@@ -294,7 +374,11 @@ interface ConsoleRouteChildren {
 }
 
 const ConsoleRouteChildren: ConsoleRouteChildren = {
+  ConsoleDepartmentsRoute: ConsoleDepartmentsRoute,
+  ConsoleFieldRoute: ConsoleFieldRoute,
   ConsoleMapRoute: ConsoleMapRoute,
+  ConsoleOfficerRoute: ConsoleOfficerRoute,
+  ConsoleWorkforceRoute: ConsoleWorkforceRoute,
   ConsoleCitizenReportRoute: ConsoleCitizenReportRoute,
   ConsoleIncidentsIdRoute: ConsoleIncidentsIdRoute,
   ConsoleAdminIndexRoute: ConsoleAdminIndexRoute,
