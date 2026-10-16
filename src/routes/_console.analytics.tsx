@@ -15,7 +15,7 @@ import { downloadFile, hoursBetween, toCsv } from "@/lib/format";
 import { BarChart3, CheckCircle2, Clock, Gauge, RefreshCw, Timer, AlertTriangle } from "lucide-react";
 
 export const Route = createFileRoute("/_console/analytics")({
-  validateSearch: (s: Record<string, unknown>) => ({ dept: typeof s.dept === "string" ? s.dept : undefined }),
+  validateSearch: (s: Record<string, unknown>): { dept?: string } => ({ dept: typeof s.dept === "string" ? s.dept : undefined }),
   head: () => ({ meta: [{ title: "Analytics & Reports — SmartCity Nexus" }, { name: "description", content: "Resolution times, SLA compliance and ward comparisons." }, { property: "og:title", content: "Analytics — SmartCity Nexus" }, { property: "og:description", content: "Operational analytics." }] }),
   component: Analytics,
 });

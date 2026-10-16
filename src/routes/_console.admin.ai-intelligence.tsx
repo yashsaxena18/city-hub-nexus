@@ -12,7 +12,7 @@ import { countBy, kpis } from "@/lib/metrics";
 import { fmtDateTime } from "@/lib/format";
 
 export const Route = createFileRoute("/_console/admin/ai-intelligence")({
-  validateSearch: (s: Record<string, unknown>) => ({ id: typeof s.id === "string" ? s.id : undefined }),
+  validateSearch: (s: Record<string, unknown>): { id?: string } => ({ id: typeof s.id === "string" ? s.id : undefined }),
   head: () => ({ meta: [{ title: "AI Incident Intelligence — SmartCity Nexus" }, { name: "description", content: "Classification, duplicate detection and summaries to support reviewers." }, { property: "og:title", content: "AI Incident Intelligence — SmartCity Nexus" }, { property: "og:description", content: "Decision support for incident triage." }] }),
   component: AI,
 });

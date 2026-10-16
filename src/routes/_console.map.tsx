@@ -13,7 +13,7 @@ import { fmtDateTime } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_console/map")({
-  validateSearch: (s: Record<string, unknown>) => ({ focus: typeof s.focus === "string" ? s.focus : undefined }),
+  validateSearch: (s: Record<string, unknown>): { focus?: string } => ({ focus: typeof s.focus === "string" ? s.focus : undefined }),
   head: () => ({ meta: [{ title: "Live City Map — SmartCity Nexus" }, { name: "description", content: "Geospatial view of incidents with clustering and hotspots." }, { property: "og:title", content: "Live City Map — SmartCity Nexus" }, { property: "og:description", content: "Incident map of the city." }] }),
   component: CityMap,
 });
