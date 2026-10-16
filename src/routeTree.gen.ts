@@ -16,7 +16,10 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ConsoleMapRouteImport } from './routes/_console.map'
 import { Route as ConsoleAdminIndexRouteImport } from './routes/_console.admin.index'
+import { Route as ConsoleCitizenIndexRouteImport } from './routes/_console.citizen.index'
+import { Route as ConsoleCitizenReportRouteImport } from './routes/_console.citizen.report'
 import { Route as ConsoleIncidentsIndexRouteImport } from './routes/_console.incidents.index'
 import { Route as ConsoleIncidentsIdRouteImport } from './routes/_console.incidents.$id'
 
@@ -54,9 +57,24 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsoleMapRoute = ConsoleMapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => ConsoleRoute,
+} as any)
 const ConsoleAdminIndexRoute = ConsoleAdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleCitizenIndexRoute = ConsoleCitizenIndexRouteImport.update({
+  id: '/citizen/',
+  path: '/citizen/',
+  getParentRoute: () => ConsoleRoute,
+} as any)
+const ConsoleCitizenReportRoute = ConsoleCitizenReportRouteImport.update({
+  id: '/citizen/report',
+  path: '/citizen/report',
   getParentRoute: () => ConsoleRoute,
 } as any)
 const ConsoleIncidentsIndexRoute = ConsoleIncidentsIndexRouteImport.update({
@@ -77,8 +95,11 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/map': typeof ConsoleMapRoute
+  '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin/': typeof ConsoleAdminIndexRoute
+  '/citizen/': typeof ConsoleCitizenIndexRoute
   '/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -88,8 +109,11 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/map': typeof ConsoleMapRoute
+  '/citizen/report': typeof ConsoleCitizenReportRoute
   '/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/admin': typeof ConsoleAdminIndexRoute
+  '/citizen': typeof ConsoleCitizenIndexRoute
   '/incidents': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRoutesById {
@@ -101,8 +125,11 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_console/map': typeof ConsoleMapRoute
+  '/_console/citizen/report': typeof ConsoleCitizenReportRoute
   '/_console/incidents/$id': typeof ConsoleIncidentsIdRoute
   '/_console/admin/': typeof ConsoleAdminIndexRoute
+  '/_console/citizen/': typeof ConsoleCitizenIndexRoute
   '/_console/incidents/': typeof ConsoleIncidentsIndexRoute
 }
 export interface FileRouteTypes {
@@ -114,8 +141,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/map'
+    | '/citizen/report'
     | '/incidents/$id'
     | '/admin/'
+    | '/citizen/'
     | '/incidents/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -125,8 +155,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/map'
+    | '/citizen/report'
     | '/incidents/$id'
     | '/admin'
+    | '/citizen'
     | '/incidents'
   id:
     | '__root__'
@@ -137,8 +170,11 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reset-password'
+    | '/_console/map'
+    | '/_console/citizen/report'
     | '/_console/incidents/$id'
     | '/_console/admin/'
+    | '/_console/citizen/'
     | '/_console/incidents/'
   fileRoutesById: FileRoutesById
 }
@@ -203,11 +239,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_console/map': {
+      id: '/_console/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof ConsoleMapRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
     '/_console/admin/': {
       id: '/_console/admin/'
       path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof ConsoleAdminIndexRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/citizen/': {
+      id: '/_console/citizen/'
+      path: '/citizen'
+      fullPath: '/citizen/'
+      preLoaderRoute: typeof ConsoleCitizenIndexRouteImport
+      parentRoute: typeof ConsoleRoute
+    }
+    '/_console/citizen/report': {
+      id: '/_console/citizen/report'
+      path: '/citizen/report'
+      fullPath: '/citizen/report'
+      preLoaderRoute: typeof ConsoleCitizenReportRouteImport
       parentRoute: typeof ConsoleRoute
     }
     '/_console/incidents/': {
@@ -228,14 +285,20 @@ declare module '@tanstack/react-router' {
 }
 
 interface ConsoleRouteChildren {
+  ConsoleMapRoute: typeof ConsoleMapRoute
+  ConsoleCitizenReportRoute: typeof ConsoleCitizenReportRoute
   ConsoleIncidentsIdRoute: typeof ConsoleIncidentsIdRoute
   ConsoleAdminIndexRoute: typeof ConsoleAdminIndexRoute
+  ConsoleCitizenIndexRoute: typeof ConsoleCitizenIndexRoute
   ConsoleIncidentsIndexRoute: typeof ConsoleIncidentsIndexRoute
 }
 
 const ConsoleRouteChildren: ConsoleRouteChildren = {
+  ConsoleMapRoute: ConsoleMapRoute,
+  ConsoleCitizenReportRoute: ConsoleCitizenReportRoute,
   ConsoleIncidentsIdRoute: ConsoleIncidentsIdRoute,
   ConsoleAdminIndexRoute: ConsoleAdminIndexRoute,
+  ConsoleCitizenIndexRoute: ConsoleCitizenIndexRoute,
   ConsoleIncidentsIndexRoute: ConsoleIncidentsIndexRoute,
 }
 
